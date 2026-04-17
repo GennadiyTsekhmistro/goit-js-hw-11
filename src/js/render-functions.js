@@ -10,9 +10,13 @@ export function createGallery(images) {
   const markup = images
     .map(img => {
       return `
-        <li>
-          <a href="${img.largeImageURL}">
-            <img src="${img.webformatURL}" alt="${img.tags}" />
+        <li class="gallery-item">
+          <a class="gallery-link" href="${img.largeImageURL}">
+            <img
+              class="gallery-image"
+              src="${img.webformatURL}"
+              alt="${img.tags}"
+            />
           </a>
           <div>
             <p>Likes: ${img.likes}</p>
