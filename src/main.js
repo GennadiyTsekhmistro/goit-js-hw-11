@@ -18,7 +18,13 @@ function onSubmit(e) {
 
   const query = e.target.elements['search-text'].value.trim();
 
-  if (!query) return;
+  if (!query) {
+  iziToast.warning({
+    message: 'Please enter a search query!',
+    position: 'topRight',
+  });
+  return;
+}
 
   clearGallery();
   showLoader();
