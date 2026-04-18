@@ -7,3 +7,27 @@
 /* Common styles */
 @import url('./reset.css');
 @import url('./base.css');
+
+.loader {
+  width: 48px;
+  height: 48px;
+  border: 5px solid #ccc;
+  border-bottom-color: #4e75ff;
+  border-radius: 50%;
+  margin: 20px auto;
+  animation: rotation 1s linear infinite;
+}
+
+.hidden {
+  display: none;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
