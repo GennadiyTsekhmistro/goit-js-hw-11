@@ -29,29 +29,28 @@ function onSubmit(e) {
   clearGallery();
   showLoader();
 
-  getImagesByQuery(query)
-    .then(data => {
-      hideLoader();
-
-      if (data.hits.length === 0) {
-        iziToast.error({
-          message:
-            'Sorry, there are no images matching your search query. Please try again!',
-          position: 'topRight',
-        });
-        return;
-      }
-
-      createGallery(data.hits);
-    })
-    .catch(() => {
-      hideLoader();
-
+ getImagesByQuery(query)
+  .then(data => {
+    if (data.hits.length === 0) {
       iziToast.error({
-        message: 'Something went wrong. Try again!',
+        message:
+          'Sorry, there are no images matching your search query. Please try again!',
         position: 'topRight',
       });
+      return;
+    }
+
+    createGallery(data.hits);
+  })
+  .catch(() => {
+    iziToast.error({
+      message: 'Something went wrong. Try again!',
+      position: 'topRight',
     });
+  })
+  .finally(() => {
+    hideLoader();
+  });
 
   form.reset();
 }
